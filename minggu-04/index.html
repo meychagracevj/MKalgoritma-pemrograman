@@ -1,50 +1,497 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mencari 3 Angka Terbesar</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Linear Search - Top 3</title>
+
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-      }
 
-      .card {
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        width: 500px;
-        text-align: center;
-      }
+        * {
+            box-sizing: border-box;
+        }
 
-      h2 {
-        margin-bottom: 20px;
-      }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef3f7;
+            color: #17324d;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .header {
+            background: #14324d;
+            color: white;
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .header h1 {
+            margin: 0 0 10px;
+        }
+
+        .header p {
+            margin: 0;
+        }
+
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        /* FLOWCHART */
+
+        .flowchart-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box {
+            width: 450px;
+            padding: 18px;
+            margin: 8px;
+            text-align: center;
+            background: #e1f0ff;
+            border: 3px solid #8bc4f0;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+
+        .start,
+        .end {
+            background: #c8f5e3;
+            border: 3px solid #75d8b5;
+            border-radius: 50px;
+        }
+
+        .decision {
+            background: #fff2c7;
+            border: 3px solid #e7c95e;
+            transform: none;
+        }
+
+        .arrow {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4c83ad;
+        }
+
+        /* INPUT */
+
+        .input-section {
+            margin-top: 50px;
+            padding: 25px;
+            background: #f5f8fb;
+            border-radius: 15px;
+        }
+
+        .input-section h2 {
+            text-align: center;
+        }
+
+        .form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        input {
+            padding: 12px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #14324d;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #245579;
+        }
+
+        #dataSiswa {
+            margin-top: 20px;
+        }
+
+        .data {
+            background: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            border-left: 5px solid #75d8b5;
+        }
+
+        /* HASIL */
+
+        .hasil {
+            margin-top: 40px;
+        }
+
+        .hasil h2 {
+            text-align: center;
+        }
+
+        .ranking {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .rank {
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            background: #e8f7f1;
+            border-radius: 15px;
+            border: 2px solid #8bd8bd;
+        }
+
+        .rank h3 {
+            margin-top: 0;
+        }
+
+        .nilai {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
     </style>
-  </head>
-  <body>
-    <div class="card">
-      <h2>Mencari 3 Angka Terbesar</h2>
-      <p id="hasil"></p>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>Alur Linear Search</h1>
+
+        <p>
+            Memeriksa nilai siswa satu per satu untuk mencari tiga nilai terbesar.
+        </p>
+
     </div>
 
-    <script>
-      const angka = [12, 45, 7, 89, 34, 1, 90, 56];
 
-      const tigaTerbesar = [...angka]
-        .sort((a, b) => b - a)
-        .slice(0, 3);
+    <div class="content">
 
-      document.getElementById("hasil").innerHTML = 
-        "Array: " + angka.join(", ") + "<br><br>" +
-        "3 angka terbesar: " + tigaTerbesar.join(", ");
-    </script>
-  </body>
+        <!-- FLOWCHART -->
+
+        <h2 class="flowchart-title">
+            Flowchart Pencarian 3 Angka Terbesar
+        </h2>
+
+        <div class="flow">
+
+            <div class="box start">
+                MULAI
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="box">
+                Siapkan array nilai siswa<br>
+                top1 = top2 = top3 = kosong
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="box">
+                Ambil satu nilai dari array
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="box decision">
+                Bandingkan nilai dengan<br>
+                top1, top2, dan top3
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="box">
+                Jika nilai lebih besar,<br>
+                ubah posisi nilai terbesar
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="box">
+                Lanjutkan ke nilai berikutnya
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="box decision">
+                Apakah semua data sudah diperiksa?
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="box">
+                Tampilkan 3 nilai terbesar
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="box end">
+                SELESAI
+            </div>
+
+        </div>
+
+
+        <!-- INPUT SISWA -->
+
+        <div class="input-section">
+
+            <h2>Data Nilai Siswa</h2>
+
+            <div class="form">
+
+                <input
+                    type="text"
+                    id="nama"
+                    placeholder="Nama siswa"
+                >
+
+                <input
+                    type="number"
+                    id="nilai"
+                    placeholder="Nilai"
+                >
+
+                <button onclick="tambahSiswa()">
+                    Tambah Data
+                </button>
+
+            </div>
+
+            <div id="dataSiswa"></div>
+
+            <br>
+
+            <div style="text-align:center">
+
+                <button onclick="cariTop3()">
+                    🔎 Cari 3 Nilai Terbesar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- HASIL -->
+
+        <div class="hasil">
+
+            <h2>🏆 TOP 3 PERINGKAT KELAS</h2>
+
+            <div
+                class="ranking"
+                id="hasil"
+            >
+                <p>
+                    Masukkan data siswa terlebih dahulu.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    // Menyimpan data siswa
+    let siswa = [];
+
+
+    // Menambahkan siswa
+    function tambahSiswa() {
+
+        let nama =
+            document.getElementById("nama").value;
+
+        let nilai =
+            Number(document.getElementById("nilai").value);
+
+
+        if (nama === "" || isNaN(nilai)) {
+
+            alert("Nama dan nilai harus diisi!");
+
+            return;
+        }
+
+
+        siswa.push({
+
+            nama: nama,
+
+            nilai: nilai
+
+        });
+
+
+        document.getElementById("nama").value = "";
+
+        document.getElementById("nilai").value = "";
+
+
+        tampilkanData();
+
+    }
+
+
+    // Menampilkan data siswa
+    function tampilkanData() {
+
+        let output = "";
+
+        for (
+            let i = 0;
+            i < siswa.length;
+            i++
+        ) {
+
+            output += `
+                <div class="data">
+                    ${i + 1}.
+                    ${siswa[i].nama}
+                    -
+                    Nilai: ${siswa[i].nilai}
+                </div>
+            `;
+
+        }
+
+
+        document.getElementById("dataSiswa").innerHTML =
+            output;
+
+    }
+
+
+    // LINEAR SEARCH
+    // Mencari 3 nilai terbesar
+    function cariTop3() {
+
+        let data = [...siswa];
+
+        let top3 = [];
+
+
+        // Mencari nilai terbesar pertama,
+        // kedua, dan ketiga
+        for (
+            let i = 0;
+            i < 3 && data.length > 0;
+            i++
+        ) {
+
+            let terbesar = -Infinity;
+
+            let posisi = -1;
+
+
+            // Linear Search
+            for (
+                let j = 0;
+                j < data.length;
+                j++
+            ) {
+
+                if (
+                    data[j].nilai > terbesar
+                ) {
+
+                    terbesar =
+                        data[j].nilai;
+
+                    posisi = j;
+
+                }
+
+            }
+
+
+            // Simpan hasil
+            top3.push(data[posisi]);
+
+
+            // Hapus data yang sudah ditemukan
+            data.splice(posisi, 1);
+
+        }
+
+
+        // Menampilkan hasil
+        let output = "";
+
+
+        for (
+            let i = 0;
+            i < top3.length;
+            i++
+        ) {
+
+            output += `
+
+                <div class="rank">
+
+                    <h3>
+                        Peringkat ${i + 1}
+                    </h3>
+
+                    <p>
+                        ${top3[i].nama}
+                    </p>
+
+                    <div class="nilai">
+                        ${top3[i].nilai}
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+        document.getElementById("hasil").innerHTML =
+            output;
+
+    }
+
+</script>
+
+</body>
 </html>
