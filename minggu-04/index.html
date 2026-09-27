@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mencari 3 Angka Terbesar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Mencari 3 Angka Terbesar</h2>
+      <p id="hasil"></p>
+    </div>
+
+    <script>
+      const angka = [12, 45, 7, 89, 34, 1, 90, 56];
+
+      const tigaTerbesar = [...angka]
+        .sort((a, b) => b - a)
+        .slice(0, 3);
+
+      document.getElementById("hasil").innerHTML = 
+        "Array: " + angka.join(", ") + "<br><br>" +
+        "3 angka terbesar: " + tigaTerbesar.join(", ");
+    </script>
+  </body>
+</html>
