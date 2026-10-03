@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perbandingan Linear Search dan Binary Search</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef3f8;
+            color: #1f2937;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .header {
+            background: #163b5c;
+            color: white;
+            padding: 30px;
+            border-radius: 18px 18px 0 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0 0 10px;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 18px 18px;
+        }
+
+        .search-box {
+            background: #f5f8fb;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .search-box h2 {
+            margin-top: 0;
+        }
+
+        input {
+            width: 280px;
+            max-width: 90%;
+            padding: 13px;
+            border: 1px solid #b8c2cc;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+
+        button {
+            padding: 13px 22px;
+            border: none;
+            border-radius: 8px;
+            background: #163b5c;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #245a82;
+        }
+
+        .reset {
+            background: #6b7280;
+            margin-left: 5px;
+        }
+
+        .result {
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            background: #eaf7ef;
+            border: 1px solid #9ed5b0;
+        }
+
+        .result h2 {
+            margin-top: 0;
+        }
+
+        .product-name {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .barcode {
+            font-size: 18px;
+        }
+
+        .methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .method {
+            border: 1px solid #d1d5db;
+            border-radius: 14px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .method-header {
+            background: #163b5c;
+            color: white;
+            padding: 18px;
+        }
+
+        .method-header h2 {
+            margin: 0 0 5px;
+        }
+
+        .method-header p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .method-body {
+            padding: 18px;
+        }
+
+        .comparison-count {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .step {
+            border-left: 4px solid #7aa7c7;
+            background: #f8fafc;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.5;
+        }
+
+        .step.found {
+            border-left-color: #36a269;
+            background: #eaf7ef;
+        }
+
+        .step.not-found {
+            border-left-color: #d9534f;
+            background: #fff0f0;
+        }
+
+        .summary {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f5f8fb;
+            border-radius: 15px;
+        }
+
+        .summary h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #d8dee5;
+        }
+
+        .number {
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .explanation {
+            margin-top: 20px;
+            padding: 18px;
+            background: #fff8df;
+            border-left: 5px solid #e4bd43;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .data-section {
+            margin-top: 30px;
+        }
+
+        .data-section h2 {
+            text-align: center;
+        }
+
+        .table-wrapper {
+            max-height: 350px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #163b5c;
+            color: white;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+        }
+
+        td {
+            padding: 9px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f3f6f9;
+        }
+
+        .empty {
+            text-align: center;
+            color: #6b7280;
+            padding: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 800px) {
+            .methods,
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            input {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+
+            .reset {
+                margin-left: 0;
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>🔎 Pencarian Data Produk</h1>
+        <p>Perbandingan Linear Search dan Binary Search</p>
+        <p>Simulasi Sistem Kasir Supermarket</p>
+    </div>
+
+
+    <div class="content">
+
+        <!-- INPUT BARCODE -->
+        <div class="search-box">
+
+            <h2>Masukkan Barcode Produk</h2>
+
+            <p>
+                Masukkan barcode yang ingin dicari pada array produk.
+            </p>
+
+            <input
+                type="number"
+                id="barcodeInput"
+                placeholder="Contoh: 1177"
+            >
+
+            <button onclick="cariProduk()">
+                🔍 Cari Produk
+            </button>
+
+            <button
+                class="reset"
+                onclick="resetProgram()">
+                Reset
+            </button>
+
+        </div>
+
+
+        <!-- HASIL PRODUK -->
+        <div id="hasilProduk" class="result">
+
+            <h2>📦 Detail Produk</h2>
+
+            <div class="empty">
+                Belum ada pencarian.
+                Masukkan barcode terlebih dahulu.
+            </div>
+
+        </div>
+
+
+        <!-- PERBANDINGAN METODE -->
+        <div class="methods">
+
+            <!-- LINEAR SEARCH -->
+            <div class="method">
+
+                <div class="method-header">
+
+                    <h2>Linear Search</h2>
+
+                    <p>
+                        Mencari data dari awal array secara berurutan.
+                    </p>
+
+                </div>
+
+                <div class="method-body">
+
+                    <div
+                        id="linearCount"
+                        class="comparison-count">
+                        Jumlah perbandingan: -
+                    </div>
+
+                    <div id="linearSteps">
+
+                        <div class="empty">
+                            Langkah pencarian akan muncul di sini.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BINARY SEARCH -->
+            <div class="method">
+
+                <div class="method-header">
+
+                    <h2>Binary Search</h2>
+
+                    <p>
+                        Membagi area pencarian menjadi dua bagian.
+                    </p>
+
+                </div>
+
+                <div class="method-body">
+
+                    <div
+                        id="binaryCount"
+                        class="comparison-count">
+                        Jumlah perbandingan: -
+                    </div>
+
+                    <div id="binarySteps">
+
+                        <div class="empty">
+                            Langkah pencarian akan muncul di sini.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RINGKASAN -->
+        <div class="summary">
+
+            <h2>📊 Ringkasan Perbandingan</h2>
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+
+                    <div>
+                        Linear Search
+                    </div>
+
+                    <div
+                        id="summaryLinear"
+                        class="number">
+                        -
+                    </div>
+
+                    <div>
+                        perbandingan
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div>
+                        Binary Search
+                    </div>
+
+                    <div
+                        id="summaryBinary"
+                        class="number">
+                        -
+                    </div>
+
+                    <div>
+                        perbandingan
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="explanation"
+                class="explanation">
+
+                Masukkan barcode untuk melihat perbandingan
+                kedua metode.
+
+            </div>
+
+        </div>
+
+
+        <!-- DAFTAR PRODUK -->
+        <div class="data-section">
+
+            <h2>📋 Array Daftar Produk</h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>No</th>
+                            <th>Barcode</th>
+                            <th>Nama Produk</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="daftarTabel">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer">
+
+            Praktikum Algoritma & Pemrograman —
+            Linear Search vs Binary Search
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    // =====================================================
+    // DATA PRODUK DARI DOSEN
+    // =====================================================
+
+    let daftarProduk = [
+        { barcode: 1008, produk: 'Sabun Lifebuoy Total 10' },
+        { barcode: 1015, produk: 'Shampo Pantene Anti Dandruff' },
+        { barcode: 1023, produk: 'Sikat Gigi Pepsodent' },
+        { barcode: 1045, produk: 'Pasta Gigi Colgate MaxFresh' },
+        { barcode: 1061, produk: 'Kecap Manis Bango 275ml' },
+        { barcode: 1078, produk: 'Saus Sambal ABC' },
+        { barcode: 1092, produk: 'Minyak Goreng Sania 2L' },
+        { barcode: 1113, produk: 'Teh Celup Sariwangi' },
+        { barcode: 1124, produk: 'Kopi Kapal Api Special' },
+        { barcode: 1139, produk: 'Gula Pasir Gulaku 1kg' },
+        { barcode: 1156, produk: 'Tepung Terigu Segitiga Biru' },
+        { barcode: 1177, produk: 'Mie Instan Indomie Goreng' },
+        { barcode: 1198, produk: 'Biskuit Roma Kelapa' },
+        { barcode: 1219, produk: 'Snack Twisko Jagung Bakar' },
+        { barcode: 1234, produk: 'Wafer Tango Cokelat' },
+        { barcode: 1251, produk: 'Susu UHT Ultra Milk Cokelat' },
+        { barcode: 1266, produk: 'Yogurt Cimory Strawberry' },
+        { barcode: 1282, produk: 'Jus Buavita Jambu' },
+        { barcode: 1305, produk: 'Air Mineral Aqua 600ml' },
+        { barcode: 1321, produk: 'Deterjen Rinso Anti Noda' },
+        { barcode: 1344, produk: 'Pewangi Molto Pure' },
+        { barcode: 1367, produk: 'Pembersih Lantai Super Pell' },
+        { barcode: 1388, produk: 'Sabun Cuci Piring Sunlight' },
+        { barcode: 1409, produk: 'Obat Nyamuk Baygon' },
+        { barcode: 1423, produk: 'Baterai ABC Alkaline AA' },
+        { barcode: 1447, produk: 'Deodoran Rexona Men' },
+        { barcode: 1468, produk: 'Parfum Axe Cokelat' },
+        { barcode: 1489, produk: 'Sabun Muka Garnier Men' },
+        { barcode: 1512, produk: 'Hand Sanitizer Antis' },
+        { barcode: 1533, produk: 'Tisu Wajah Paseo' },
+        { barcode: 1555, produk: 'Popok Bayi MamyPoko' },
+        { barcode: 1578, produk: 'Beras Sania 5kg' },
+        { barcode: 1599, produk: 'Telur Ayam Negeri (per kg)' },
+        { barcode: 1621, produk: 'Roti Tawar Sari Roti' },
+        { barcode: 1645, produk: 'Selai Cokelat Nutella' },
+        { barcode: 1666, produk: 'Keju Kraft Cheddar' },
+        { barcode: 1687, produk: 'Sarden ABC Tomat' },
+        { barcode: 1708, produk: 'Kornet Sapi Pronas' },
+        { barcode: 1729, produk: 'Bubur Bayi Sun Pisang' },
+        { barcode: 1751, produk: 'Pembalut Charm Body Fit' },
+        { barcode: 1774, produk: 'Cokelat SilverQueen' },
+        { barcode: 1798, produk: 'Permen Kiss Mint' },
+        { barcode: 1823, produk: 'Keripik Kentang Chitato' },
+        { barcode: 1845, produk: 'Minuman Soda Coca-Cola' },
+        { barcode: 1867, produk: 'Sirup Marjan Cocopandan' },
+        { barcode: 1888, produk: 'Es Krim Walls Magnum' },
+        { barcode: 1910, produk: 'Sereal Koko Krunch' },
+        { barcode: 1932, produk: 'Mentega Blue Band' },
+        { barcode: 1956, produk: 'Sambal Terasi Uleg' },
+        { barcode: 1999, produk: 'Kopi Sachet Nescafe Classic' }
+    ];
+
+
+    // =====================================================
+    // MENAMPILKAN ARRAY PRODUK KE TABEL
+    // =====================================================
+
+    function tampilkanDaftarProduk() {
+
+        let tabel = "";
+
+        for (let i = 0; i < daftarProduk.length; i++) {
+
+            tabel += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${daftarProduk[i].barcode}</td>
+                    <td>${daftarProduk[i].produk}</td>
+                </tr>
+            `;
+
+        }
+
+        document.getElementById("daftarTabel").innerHTML = tabel;
+    }
+
+
+    // =====================================================
+    // LINEAR SEARCH
+    // =====================================================
+
+    function linearSearch(target) {
+
+        let steps = [];
+        let comparisons = 0;
+        let indexDitemukan = -1;
+
+
+        for (let i = 0; i < daftarProduk.length; i++) {
+
+            comparisons++;
+
+            let barcodeSaatIni =
+                daftarProduk[i].barcode;
+
+
+            if (barcodeSaatIni === target) {
+
+                steps.push({
+                    text:
+                        `Perbandingan ${comparisons}: ` +
+                        `barcode ${barcodeSaatIni} == ${target} → DATA DITEMUKAN`,
+                    found: true
+                });
+
+                indexDitemukan = i;
+
+                break;
+
+            } else {
+
+                steps.push({
+                    text:
+                        `Perbandingan ${comparisons}: ` +
+                        `barcode ${barcodeSaatIni} ≠ ${target}`,
+                    found: false
+                });
+
+            }
+
+        }
+
+
+        if (indexDitemukan === -1) {
+
+            steps.push({
+                text:
+                    `Data dengan barcode ${target} tidak ditemukan.`,
+                notFound: true
+            });
+
+        }
+
+
+        return {
+            index: indexDitemukan,
+            comparisons: comparisons,
+            steps: steps
+        };
+
+    }
+
+
+    // =====================================================
+    // BINARY SEARCH
+    // =====================================================
+
+    function binarySearch(target) {
+
+        let low = 0;
+        let high = daftarProduk.length - 1;
+
+        let comparisons = 0;
+        let steps = [];
+
+        let indexDitemukan = -1;
+
+
+        while (low <= high) {
+
+            let mid =
+                Math.floor((low + high) / 2);
+
+            let barcodeTengah =
+                daftarProduk[mid].barcode;
+
+
+            comparisons++;
+
+
+            if (barcodeTengah === target) {
+
+                steps.push({
+                    text:
+                        `Perbandingan ${comparisons}: ` +
+                        `low=${low}, mid=${mid}, high=${high} → ` +
+                        `barcode ${barcodeTengah} == ${target} → DATA DITEMUKAN`,
+                    found: true
+                });
+
+                indexDitemukan = mid;
+
+                break;
+
+            }
+
+
+            if (barcodeTengah < target) {
+
+                steps.push({
+                    text:
+                        `Perbandingan ${comparisons}: ` +
+                        `low=${low}, mid=${mid}, high=${high} → ` +
+                        `barcode ${barcodeTengah} < ${target} → ` +
+                        `cari di bagian kanan`,
+                    found: false
+                });
+
+                low = mid + 1;
+
+            } else {
+
+                steps.push({
+                    text:
+                        `Perbandingan ${comparisons}: ` +
+                        `low=${low}, mid=${mid}, high=${high} → ` +
+                        `barcode ${barcodeTengah} > ${target} → ` +
+                        `cari di bagian kiri`,
+                    found: false
+                });
+
+                high = mid - 1;
+
+            }
+
+        }
+
+
+        if (indexDitemukan === -1) {
+
+            steps.push({
+                text:
+                    `Data dengan barcode ${target} tidak ditemukan.`,
+                notFound: true
+            });
+
+        }
+
+
+        return {
+            index: indexDitemukan,
+            comparisons: comparisons,
+            steps: steps
+        };
+
+    }
+
+
+    // =====================================================
+    // MENAMPILKAN LANGKAH PENCARIAN
+    // =====================================================
+
+    function tampilkanLangkah(elementId, steps) {
+
+        let output = "";
+
+
+        for (let i = 0; i < steps.length; i++) {
+
+            let className = "step";
+
+
+            if (steps[i].found) {
+                className += " found";
+            }
+
+
+            if (steps[i].notFound) {
+                className += " not-found";
+            }
+
+
+            output += `
+                <div class="${className}">
+                    ${steps[i].text}
+                </div>
+            `;
+
+        }
+
+
+        document.getElementById(elementId).innerHTML =
+            output;
+
+    }
+
+
+    // =====================================================
+    // PROSES UTAMA PENCARIAN
+    // =====================================================
+
+    function cariProduk() {
+
+        let input =
+            document.getElementById("barcodeInput").value;
+
+
+        if (input === "") {
+
+            alert("Masukkan barcode terlebih dahulu!");
+
+            return;
+
+        }
+
+
+        let target = Number(input);
+
+
+        // Jalankan Linear Search
+        let hasilLinear =
+            linearSearch(target);
+
+
+        // Jalankan Binary Search
+        let hasilBinary =
+            binarySearch(target);
+
+
+        // Menampilkan langkah Linear Search
+        tampilkanLangkah(
+            "linearSteps",
+            hasilLinear.steps
+        );
+
+
+        // Menampilkan langkah Binary Search
+        tampilkanLangkah(
+            "binarySteps",
+            hasilBinary.steps
+        );
+
+
+        // Jumlah perbandingan
+        document.getElementById("linearCount").innerHTML =
+            `Jumlah perbandingan: ${hasilLinear.comparisons}`;
+
+
+        document.getElementById("binaryCount").innerHTML =
+            `Jumlah perbandingan: ${hasilBinary.comparisons}`;
+
+
+        // Ringkasan
+        document.getElementById("summaryLinear").innerHTML =
+            hasilLinear.comparisons;
+
+
+        document.getElementById("summaryBinary").innerHTML =
+            hasilBinary.comparisons;
+
+
+        // Menampilkan detail produk
+        let indexProduk = hasilLinear.index;
+
+
+        if (indexProduk !== -1) {
+
+            let produk =
+                daftarProduk[indexProduk];
+
+
+            document.getElementById("hasilProduk").innerHTML = `
+
+                <h2>📦 Produk Ditemukan</h2>
+
+                <div class="barcode">
+                    Barcode: <strong>${produk.barcode}</strong>
+                </div>
+
+                <div class="product-name">
+                    ${produk.produk}
+                </div>
+
+                <p>
+                    Produk berhasil ditemukan dalam array.
+                </p>
+
+            `;
+
+
+            // Penjelasan
+            if (
+                hasilBinary.comparisons <
+                hasilLinear.comparisons
+            ) {
+
+                document.getElementById("explanation").innerHTML = `
+
+                    <strong>Kesimpulan:</strong><br><br>
+
+                    Untuk barcode <strong>${target}</strong>,
+                    Linear Search membutuhkan
+                    <strong>${hasilLinear.comparisons}</strong>
+                    perbandingan, sedangkan Binary Search
+                    membutuhkan
+                    <strong>${hasilBinary.comparisons}</strong>
+                    perbandingan.
+
+                    <br><br>
+
+                    Pada pencarian ini, Binary Search
+                    membutuhkan lebih sedikit perbandingan
+                    karena pencarian dilakukan dengan membagi
+                    area pencarian menjadi dua bagian.
+
+                `;
+
+            } else if (
+                hasilBinary.comparisons ===
+                hasilLinear.comparisons
+            ) {
+
+                document.getElementById("explanation").innerHTML = `
+
+                    <strong>Kesimpulan:</strong><br><br>
+
+                    Kedua metode membutuhkan jumlah
+                    perbandingan yang sama untuk barcode
+                    <strong>${target}</strong>.
+
+                `;
+
+            } else {
+
+                document.getElementById("explanation").innerHTML = `
+
+                    <strong>Kesimpulan:</strong><br><br>
+
+                    Pada pencarian barcode
+                    <strong>${target}</strong>,
+                    Linear Search membutuhkan
+                    ${hasilLinear.comparisons}
+                    perbandingan, sedangkan Binary Search
+                    membutuhkan
+                    ${hasilBinary.comparisons}
+                    perbandingan.
+
+                `;
+
+            }
+
+
+        } else {
+
+            document.getElementById("hasilProduk").innerHTML = `
+
+                <h2>❌ Produk Tidak Ditemukan</h2>
+
+                <p>
+                    Barcode <strong>${target}</strong>
+                    tidak terdapat dalam daftar produk.
+                </p>
+
+            `;
+
+
+            document.getElementById("explanation").innerHTML = `
+
+                <strong>Kesimpulan:</strong><br><br>
+
+                Barcode <strong>${target}</strong>
+                tidak ditemukan pada array.
+
+                <br><br>
+
+                Linear Search melakukan
+                <strong>${hasilLinear.comparisons}</strong>
+                perbandingan.
+
+                Binary Search melakukan
+                <strong>${hasilBinary.comparisons}</strong>
+                perbandingan.
+
+            `;
+
+        }
+
+    }
+
+
+    // =====================================================
+    // RESET
+    // =====================================================
+
+    function resetProgram() {
+
+        document.getElementById("barcodeInput").value = "";
+
+
+        document.getElementById("hasilProduk").innerHTML = `
+
+            <h2>📦 Detail Produk</h2>
+
+            <div class="empty">
+                Belum ada pencarian.
+                Masukkan barcode terlebih dahulu.
+            </div>
+
+        `;
+
+
+        document.getElementById("linearCount").innerHTML =
+            "Jumlah perbandingan: -";
+
+
+        document.getElementById("binaryCount").innerHTML =
+            "Jumlah perbandingan: -";
+
+
+        document.getElementById("summaryLinear").innerHTML =
+            "-";
+
+
+        document.getElementById("summaryBinary").innerHTML =
+            "-";
+
+
+        document.getElementById("linearSteps").innerHTML = `
+
+            <div class="empty">
+                Langkah pencarian akan muncul di sini.
+            </div>
+
+        `;
+
+
+        document.getElementById("binarySteps").innerHTML = `
+
+            <div class="empty">
+                Langkah pencarian akan muncul di sini.
+            </div>
+
+        `;
+
+
+        document.getElementById("explanation").innerHTML = `
+
+            Masukkan barcode untuk melihat perbandingan
+            kedua metode.
+
+        `;
+
+    }
+
+
+    // =====================================================
+    // JALANKAN TABEL SAAT HALAMAN DIBUKA
+    // =====================================================
+
+    tampilkanDaftarProduk();
+
+
+    // Tekan ENTER untuk mencari
+    document
+        .getElementById("barcodeInput")
+        .addEventListener("keypress", function(event) {
+
+            if (event.key === "Enter") {
+
+                cariProduk();
+
+            }
+
+        });
+
+</script>
+
+</body>
+</html>
