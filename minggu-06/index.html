@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengurutan Nilai UTS Mahasiswa</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 25px;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 20px auto;
+            padding: 28px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            text-align: center;
+            color: #1d4ed8;
+            font-size: 27px;
+        }
+
+        .deskripsi {
+            margin-bottom: 25px;
+            text-align: center;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .info-card {
+            padding: 16px 10px;
+            text-align: center;
+            background: #eff6ff;
+            border-radius: 10px;
+        }
+
+        .info-card strong {
+            display: block;
+            margin-bottom: 7px;
+            color: #1d4ed8;
+            font-size: 22px;
+        }
+
+        .info-card span {
+            font-size: 13px;
+            color: #475569;
+        }
+
+        .kontrol {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: end;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .pilihan {
+            flex: 1;
+            min-width: 190px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        select {
+            background: white;
+        }
+
+        button {
+            width: auto;
+            min-width: 145px;
+            cursor: pointer;
+            border: none;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .tombol-reset {
+            background: #64748b;
+        }
+
+        .tombol-reset:hover {
+            background: #475569;
+        }
+
+        .status {
+            margin: 12px 0;
+            padding: 13px;
+            border-radius: 8px;
+            background: #f0fdf4;
+            color: #166534;
+            line-height: 1.5;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        th, td {
+            padding: 13px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        th {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        tbody tr:hover {
+            background: #eff6ff;
+        }
+
+        .nilai {
+            font-weight: bold;
+            color: #1d4ed8;
+        }
+
+        .catatan {
+            margin-top: 22px;
+            padding: 15px;
+            background: #f8fafc;
+            border-left: 4px solid #2563eb;
+            border-radius: 5px;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        footer {
+            margin-top: 25px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            .container {
+                padding: 18px;
+                margin: 8px auto;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .kontrol {
+                align-items: stretch;
+            }
+
+            .kontrol button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Pengurutan Nilai UTS Mahasiswa</h1>
+
+        <p class="deskripsi">
+            Program pengurutan nilai ujian mahasiswa
+            menggunakan algoritma Bubble Sort.
+        </p>
+
+        <div class="info">
+            <div class="info-card">
+                <strong id="jumlahMahasiswa">18</strong>
+                <span>Jumlah Mahasiswa</span>
+            </div>
+
+            <div class="info-card">
+                <strong>Bubble Sort</strong>
+                <span>Algoritma Pengurutan</span>
+            </div>
+
+            <div class="info-card">
+                <strong id="jenisUrutan">Descending</strong>
+                <span>Urutan Nilai</span>
+            </div>
+        </div>
+
+        <div class="kontrol">
+            <div class="pilihan">
+                <label for="urutan">Pilih Urutan Nilai:</label>
+                <select id="urutan">
+                    <option value="descending">
+                        Descending (Terbesar ke Terkecil)
+                    </option>
+                    <option value="ascending">
+                        Ascending (Terkecil ke Terbesar)
+                    </option>
+                </select>
+            </div>
+
+            <button onclick="urutkanNilai()">
+                Urutkan Nilai
+            </button>
+
+            <button class="tombol-reset" onclick="tampilkanDataAwal()">
+                Reset Data
+            </button>
+        </div>
+
+        <div id="status" class="status" aria-live="polite">
+            Data berhasil dimuat.
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama Mahasiswa</th>
+                        <th>Nilai UTS</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelMahasiswa"></tbody>
+            </table>
+        </div>
+
+        <div class="catatan">
+            <strong>Informasi Program</strong><br>
+            Jumlah mahasiswa = 10 + nomor absen (8) = 18 mahasiswa.<br>
+            Algoritma yang digunakan adalah Bubble Sort,
+            yaitu membandingkan nilai yang berdekatan dan
+            menukarnya jika urutannya belum sesuai pilihan.
+        </div>
+
+        <footer>
+            Program Algoritma dan Pemrograman
+        </footer>
+
+    </div>
+
+    <script>
+        // Data contoh 18 mahasiswa.
+        // Ganti nama dan nilai sesuai data yang dibutuhkan.
+
+        const dataAwal = [
+            { nama: "Andi", nilai: 78 },
+            { nama: "Budi", nilai: 85 },
+            { nama: "Citra", nilai: 92 },
+            { nama: "Dinda", nilai: 76 },
+            { nama: "Eko", nilai: 88 },
+            { nama: "Fitri", nilai: 95 },
+            { nama: "Gilang", nilai: 80 },
+            { nama: "Hana", nilai: 87 },
+            { nama: "Indra", nilai: 73 },
+            { nama: "Jihan", nilai: 90 },
+            { nama: "Kevin", nilai: 82 },
+            { nama: "Laras", nilai: 96 },
+            { nama: "Maya", nilai: 84 },
+            { nama: "Nanda", nilai: 79 },
+            { nama: "Oki", nilai: 91 },
+            { nama: "Putri", nilai: 86 },
+            { nama: "Rizky", nilai: 75 },
+            { nama: "Salsa", nilai: 98 }
+        ];
+
+        // Menampilkan data ke tabel
+        function tampilkanData(data) {
+            const tabel = document.getElementById("tabelMahasiswa");
+            tabel.innerHTML = "";
+
+            data.forEach((mahasiswa, index) => {
+                const baris = document.createElement("tr");
+
+                const nomor = document.createElement("td");
+                nomor.textContent = index + 1;
+
+                const nama = document.createElement("td");
+                nama.textContent = mahasiswa.nama;
+
+                const nilai = document.createElement("td");
+                nilai.textContent = mahasiswa.nilai;
+                nilai.className = "nilai";
+
+                baris.append(nomor, nama, nilai);
+                tabel.appendChild(baris);
+            });
+        }
+
+        // Algoritma Bubble Sort
+        function bubbleSort(data, urutan) {
+            const hasil = [...data];
+            let jumlahPerbandingan = 0;
+            let jumlahPertukaran = 0;
+
+            for (let i = 0; i < hasil.length - 1; i++) {
+                let adaPertukaran = false;
+
+                for (let j = 0; j < hasil.length - 1 - i; j++) {
+                    jumlahPerbandingan++;
+
+                    let perluTukar;
+
+                    if (urutan === "ascending") {
+                        perluTukar =
+                            hasil[j].nilai > hasil[j + 1].nilai;
+                    } else {
+                        perluTukar =
+                            hasil[j].nilai < hasil[j + 1].nilai;
+                    }
+
+                    if (perluTukar) {
+                        const sementara = hasil[j];
+                        hasil[j] = hasil[j + 1];
+                        hasil[j + 1] = sementara;
+
+                        jumlahPertukaran++;
+                        adaPertukaran = true;
+                    }
+                }
+
+                // Berhenti lebih cepat jika data sudah terurut
+                if (!adaPertukaran) {
+                    break;
+                }
+            }
+
+            return {
+                data: hasil,
+                perbandingan: jumlahPerbandingan,
+                pertukaran: jumlahPertukaran
+            };
+        }
+
+        // Menjalankan pengurutan berdasarkan pilihan
+        function urutkanNilai() {
+            const urutan = document.getElementById("urutan").value;
+            const hasil = bubbleSort(dataAwal, urutan);
+
+            tampilkanData(hasil.data);
+
+            const namaUrutan = urutan === "ascending"
+                ? "Ascending (Terkecil ke Terbesar)"
+                : "Descending (Terbesar ke Terkecil)";
+
+            document.getElementById("jenisUrutan").textContent =
+                urutan === "ascending" ? "Ascending" : "Descending";
+
+            document.getElementById("status").textContent =
+                "Pengurutan berhasil! " + namaUrutan +
+                ". Jumlah perbandingan: " + hasil.perbandingan +
+                " kali, jumlah pertukaran: " + hasil.pertukaran + " kali.";
+        }
+
+        // Mengembalikan data ke urutan awal
+        function tampilkanDataAwal() {
+            tampilkanData(dataAwal);
+
+            document.getElementById("urutan").value = "descending";
+            document.getElementById("jenisUrutan").textContent = "Descending";
+
+            document.getElementById("status").textContent =
+                "Data dikembalikan ke urutan awal.";
+        }
+
+        // Saat web dibuka, langsung tampilkan nilai terbesar ke terkecil
+        document.getElementById("jumlahMahasiswa").textContent =
+            dataAwal.length;
+
+        urutkanNilai();
+    </script>
+</body>
+</html>
