@@ -29,3 +29,1247 @@
 
 </body>
 </html>
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#fff0f6">
+
+    <meta name="description" content="Website tugas Algoritma dan Pemrograman Meycha Grace Velizya.">
+
+    <title>Meycha's Pink Bunny Corner</title>
+
+    <style>
+
+        :root {
+
+            --pink: #f5a8c7;
+
+            --pink-dark: #d94f89;
+
+            --pink-light: #fff0f6;
+
+            --pink-soft: #ffe0ec;
+
+            --cream: #fffaf7;
+
+            --text: #603d50;
+
+            --muted: #97768a;
+
+            --white: #ffffff;
+
+            --shadow: 0 12px 30px rgba(190, 90, 135, .12);
+
+        }
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+        body {
+
+            font-family: "Trebuchet MS", Arial, sans-serif;
+
+            color: var(--text);
+
+            background:
+
+                radial-gradient(circle at 8% 8%, #ffe0ec 0, transparent 24%),
+
+                radial-gradient(circle at 95% 28%, #fce5f1 0, transparent 25%),
+
+                var(--cream);
+
+            line-height: 1.6;
+
+            min-height: 100vh;
+
+        }
+
+        a {
+
+            color: inherit;
+
+            text-decoration: none;
+
+        }
+
+        button, input {
+
+            font: inherit;
+
+        }
+
+        .navbar {
+
+            width: min(1120px, 92%);
+
+            margin: 0 auto;
+
+            padding: 22px 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 16px;
+
+        }
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 1.05rem;
+
+            font-weight: 800;
+
+        }
+
+        .brand-icon {
+
+            background: var(--white);
+
+            width: 44px;
+
+            height: 44px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 16px;
+
+            box-shadow: var(--shadow);
+
+            font-size: 1.5rem;
+
+        }
+
+        .nav-tag {
+
+            color: var(--pink-dark);
+
+            background: #fff;
+
+            border: 1px solid var(--pink-soft);
+
+            border-radius: 30px;
+
+            padding: 8px 15px;
+
+            font-size: .8rem;
+
+            font-weight: 700;
+
+        }
+
+        .hero {
+
+            width: min(1120px, 92%);
+
+            margin: 20px auto 36px;
+
+            background: linear-gradient(130deg, #ffe2ee, #fff3f8 65%, #fff);
+
+            border: 1px solid #f9d4e4;
+
+            border-radius: 32px;
+
+            padding: clamp(25px, 5vw, 58px);
+
+            display: grid;
+
+            grid-template-columns: 1.4fr .6fr;
+
+            align-items: center;
+
+            gap: 25px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            box-shadow: var(--shadow);
+
+        }
+
+        .eyebrow {
+
+            display: inline-block;
+
+            background: white;
+
+            color: var(--pink-dark);
+
+            padding: 7px 13px;
+
+            border-radius: 30px;
+
+            font-size: .78rem;
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+            margin-bottom: 17px;
+
+        }
+
+        .hero h1 {
+
+            font-size: clamp(2rem, 5vw, 3.7rem);
+
+            line-height: 1.12;
+
+            letter-spacing: -1.5px;
+
+            margin-bottom: 17px;
+
+        }
+
+        .hero h1 span {
+
+            color: var(--pink-dark);
+
+        }
+
+        .hero p {
+
+            color: #826278;
+
+            max-width: 570px;
+
+            margin-bottom: 24px;
+
+        }
+
+        .hero-actions {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+        .primary-btn {
+
+            display: inline-block;
+
+            border: none;
+
+            cursor: pointer;
+
+            background: var(--pink-dark);
+
+            color: white;
+
+            padding: 12px 19px;
+
+            border-radius: 15px;
+
+            font-weight: 800;
+
+            box-shadow: 0 7px 16px #d94f8930;
+
+            transition: transform .2s, background .2s;
+
+        }
+
+        .primary-btn:hover {
+
+            background: #bf3973;
+
+            transform: translateY(-3px);
+
+        }
+
+        .secondary-btn {
+
+            display: inline-block;
+
+            color: var(--pink-dark);
+
+            background: white;
+
+            padding: 12px 18px;
+
+            border-radius: 15px;
+
+            font-weight: 800;
+
+            border: 1px solid #f6d2e2;
+
+        }
+
+        .bunny-area {
+
+            display: grid;
+
+            place-items: center;
+
+            min-height: 240px;
+
+            position: relative;
+
+        }
+
+        .bunny-card {
+
+            width: min(245px, 100%);
+
+            aspect-ratio: 1;
+
+            background: rgba(255,255,255,.78);
+
+            border: 2px dashed #f2bad2;
+
+            border-radius: 45% 45% 35% 35%;
+
+            display: grid;
+
+            place-items: center;
+
+            position: relative;
+
+            animation: float 3.5s ease-in-out infinite;
+
+        }
+
+        .bunny {
+
+            font-size: clamp(7rem, 15vw, 10rem);
+
+            filter: drop-shadow(0 9px 5px #d889aa24);
+
+            line-height: 1;
+
+        }
+
+        .sparkle {
+
+            position: absolute;
+
+            color: var(--pink-dark);
+
+            font-size: 1.6rem;
+
+            animation: twinkle 2s ease-in-out infinite alternate;
+
+        }
+
+        .sparkle.one { top: 12%; left: 8%; }
+
+        .sparkle.two { top: 23%; right: 3%; animation-delay: .5s; }
+
+        .sparkle.three { bottom: 12%; left: 13%; animation-delay: 1s; }
+
+        .bunny-caption {
+
+            position: absolute;
+
+            bottom: 3px;
+
+            background: white;
+
+            color: var(--pink-dark);
+
+            padding: 7px 14px;
+
+            border-radius: 20px;
+
+            font-size: .82rem;
+
+            font-weight: 800;
+
+            box-shadow: var(--shadow);
+
+        }
+
+        .section {
+
+            width: min(1120px, 92%);
+
+            margin: 0 auto;
+
+            padding: 15px 0 42px;
+
+        }
+
+        .section-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: end;
+
+            gap: 18px;
+
+            margin-bottom: 20px;
+
+        }
+
+        .section-heading h2 {
+
+            font-size: clamp(1.45rem, 3vw, 2rem);
+
+            margin-bottom: 4px;
+
+        }
+
+        .section-heading p {
+
+            color: var(--muted);
+
+            font-size: .92rem;
+
+        }
+
+        .counter {
+
+            white-space: nowrap;
+
+            color: var(--pink-dark);
+
+            background: white;
+
+            padding: 9px 13px;
+
+            border-radius: 13px;
+
+            font-size: .85rem;
+
+            font-weight: 800;
+
+        }
+
+        .tools {
+
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 23px;
+
+        }
+
+        .search-box {
+
+            flex: 1;
+
+            min-width: 210px;
+
+            position: relative;
+
+        }
+
+        .search-box input {
+
+            width: 100%;
+
+            padding: 13px 16px 13px 43px;
+
+            border-radius: 15px;
+
+            border: 1px solid #f1ccdd;
+
+            outline: none;
+
+            background: white;
+
+            color: var(--text);
+
+        }
+
+        .search-box input:focus {
+
+            border-color: var(--pink-dark);
+
+            box-shadow: 0 0 0 3px #f5a8c733;
+
+        }
+
+        .search-icon {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+        }
+
+        .reset-btn {
+
+            padding: 12px 16px;
+
+            border: 1px solid #f1ccdd;
+
+            border-radius: 15px;
+
+            background: white;
+
+            color: var(--pink-dark);
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+        }
+
+        .task-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            gap: 17px;
+
+        }
+
+        .task-card {
+
+            background: rgba(255,255,255,.92);
+
+            border: 1px solid #f6dce8;
+
+            border-radius: 22px;
+
+            padding: 22px;
+
+            box-shadow: 0 5px 18px rgba(190,90,135,.06);
+
+            display: flex;
+
+            flex-direction: column;
+
+            min-height: 195px;
+
+            transition: transform .22s, box-shadow .22s, border-color .22s;
+
+        }
+
+        .task-card:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow: var(--shadow);
+
+            border-color: #eaa2c1;
+
+        }
+
+        .task-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 17px;
+
+        }
+
+        .task-number {
+
+            background: var(--pink-light);
+
+            color: var(--pink-dark);
+
+            font-size: .8rem;
+
+            font-weight: 900;
+
+            padding: 7px 11px;
+
+            border-radius: 11px;
+
+        }
+
+        .task-flower {
+
+            font-size: 1.5rem;
+
+        }
+
+        .task-card h3 {
+
+            font-size: 1.12rem;
+
+            margin-bottom: 5px;
+
+        }
+
+        .task-card p {
+
+            font-size: .86rem;
+
+            color: var(--muted);
+
+            margin-bottom: 18px;
+
+        }
+
+        .task-link {
+
+            margin-top: auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            color: var(--pink-dark);
+
+            font-size: .9rem;
+
+            font-weight: 900;
+
+        }
+
+        .arrow {
+
+            display: grid;
+
+            place-items: center;
+
+            width: 30px;
+
+            height: 30px;
+
+            border-radius: 10px;
+
+            background: var(--pink-light);
+
+            transition: transform .2s;
+
+        }
+
+        .task-card:hover .arrow {
+
+            transform: translateX(4px);
+
+        }
+
+        .empty-state {
+
+            display: none;
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: var(--muted);
+
+            background: white;
+
+            border-radius: 18px;
+
+        }
+
+        .about {
+
+            width: min(1120px, 92%);
+
+            margin: 0 auto 40px;
+
+            background: #fff;
+
+            border: 1px solid #f6dce8;
+
+            border-radius: 25px;
+
+            padding: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            box-shadow: var(--shadow);
+
+        }
+
+        .about-icon {
+
+            flex-shrink: 0;
+
+            width: 58px;
+
+            height: 58px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 18px;
+
+            background: var(--pink-light);
+
+            font-size: 1.8rem;
+
+        }
+
+        .about p {
+
+            color: var(--muted);
+
+            font-size: .92rem;
+
+        }
+
+        footer {
+
+            background: #ffe6f0;
+
+            text-align: center;
+
+            padding: 26px 15px;
+
+            color: #91657d;
+
+            font-size: .85rem;
+
+        }
+
+        footer span {
+
+            color: var(--pink-dark);
+
+            font-weight: 900;
+
+        }
+
+        .back-top {
+
+            display: inline-block;
+
+            margin-top: 8px;
+
+            color: var(--pink-dark);
+
+            font-weight: 800;
+
+        }
+
+        @keyframes float {
+
+            0%, 100% { transform: translateY(0); }
+
+            50% { transform: translateY(-10px); }
+
+        }
+
+        @keyframes twinkle {
+
+            from { opacity: .45; transform: scale(.85) rotate(-8deg); }
+
+            to { opacity: 1; transform: scale(1.15) rotate(8deg); }
+
+        }
+
+        @media (max-width: 800px) {
+
+            .hero {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .bunny-area {
+
+                min-height: 230px;
+
+            }
+
+            .bunny-card {
+
+                width: 210px;
+
+            }
+
+            .task-grid {
+
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            }
+
+        }
+
+        @media (max-width: 520px) {
+
+            .navbar {
+
+                padding: 15px 0;
+
+            }
+
+            .nav-tag {
+
+                font-size: .7rem;
+
+                padding: 7px 10px;
+
+            }
+
+            .hero {
+
+                margin-top: 10px;
+
+                border-radius: 24px;
+
+            }
+
+            .section-heading {
+
+                align-items: start;
+
+                flex-direction: column;
+
+            }
+
+            .task-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .task-card {
+
+                min-height: 170px;
+
+            }
+
+            .about {
+
+                align-items: start;
+
+                padding: 20px;
+
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *, *::before, *::after {
+
+                scroll-behavior: auto !important;
+
+                animation: none !important;
+
+                transition: none !important;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body id="top">
+
+    <header class="navbar">
+
+        <a class="brand" href="#top" aria-label="Kembali ke halaman utama">
+
+            <span class="brand-icon">🐰</span>
+
+            <span>meycha's corner</span>
+
+        </a>
+
+        <span class="nav-tag">✿ STUDENT PORTFOLIO ✿</span>
+
+    </header>
+
+    <main>
+
+        <section class="hero">
+
+            <div>
+
+                <span class="eyebrow">♡ WELCOME TO MY LITTLE WEBSITE ♡</span>
+
+                <h1>My Pink Bunny<br><span>Study Corner!</span></h1>
+
+                <p>
+
+                    Hai, selamat datang di ruang belajar digital Meycha!
+
+                    Di sini ada kumpulan tugas mata kuliah Algoritma dan
+
+                    Pemrograman yang disusun dengan penuh semangat.
+
+                    Yuk, jelajahi satu per satu! 🌷
+
+                </p>
+
+                <div class="hero-actions">
+
+                    <a class="primary-btn" href="#daftar-tugas">Jelajahi Tugas ♡</a>
+
+                    <a class="secondary-btn" href="#tentang">Tentang Website</a>
+
+                </div>
+
+            </div>
+
+            <div class="bunny-area" aria-label="Ilustrasi kelinci lucu">
+
+                <span class="sparkle one">✦</span>
+
+                <span class="sparkle two">♡</span>
+
+                <span class="sparkle three">✧</span>
+
+                <div class="bunny-card">
+
+                    <span class="bunny" role="img" aria-label="Kelinci">🐰</span>
+
+                </div>
+
+                <span class="bunny-caption">little bunny says hi! ♡</span>
+
+            </div>
+
+        </section>
+
+        <section class="section" id="daftar-tugas">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>My Assignment Garden 🌸</h2>
+
+                    <p>Pilih minggu yang ingin kamu kunjungi.</p>
+
+                </div>
+
+                <div class="counter" id="task-counter">12 tugas tersedia</div>
+
+            </div>
+
+            <div class="tools">
+
+                <label class="search-box">
+
+                    <span class="search-icon">🔎</span>
+
+                    <input
+
+                        type="search"
+
+                        id="search-input"
+
+                        placeholder="Cari tugas berdasarkan minggu..."
+
+                        aria-label="Cari tugas berdasarkan minggu"
+
+                    >
+
+                </label>
+
+                <button class="reset-btn" id="reset-search" type="button">
+
+                    Tampilkan Semua
+
+                </button>
+
+            </div>
+
+            <div class="task-grid" id="task-grid">
+
+                <a class="task-card" href="./minggu-01/" data-title="minggu 01">
+
+                    <div class="task-top"><span class="task-number">WEEK 01</span><span class="task-flower">🌷</span></div>
+
+                    <h3>Minggu 01</h3>
+
+                    <p>Awal perjalanan belajar algoritma.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-02/" data-title="minggu 02">
+
+                    <div class="task-top"><span class="task-number">WEEK 02</span><span class="task-flower">🩷</span></div>
+
+                    <h3>Minggu 02</h3>
+
+                    <p>Kumpulan materi dan latihan minggu kedua.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-03/" data-title="minggu 03">
+
+                    <div class="task-top"><span class="task-number">WEEK 03</span><span class="task-flower">🌼</span></div>
+
+                    <h3>Minggu 03</h3>
+
+                    <p>Kumpulan materi dan latihan minggu ketiga.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-04/" data-title="minggu 04">
+
+                    <div class="task-top"><span class="task-number">WEEK 04</span><span class="task-flower">🎀</span></div>
+
+                    <h3>Minggu 04</h3>
+
+                    <p>Kumpulan materi dan latihan minggu keempat.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-05/" data-title="minggu 05">
+
+                    <div class="task-top"><span class="task-number">WEEK 05</span><span class="task-flower">🌸</span></div>
+
+                    <h3>Minggu 05</h3>
+
+                    <p>Kumpulan materi dan latihan minggu kelima.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-06/" data-title="minggu 06">
+
+                    <div class="task-top"><span class="task-number">WEEK 06</span><span class="task-flower">🍓</span></div>
+
+                    <h3>Minggu 06</h3>
+
+                    <p>Kumpulan materi dan latihan minggu keenam.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-07/" data-title="minggu 07">
+
+                    <div class="task-top"><span class="task-number">WEEK 07</span><span class="task-flower">🦋</span></div>
+
+                    <h3>Minggu 07</h3>
+
+                    <p>Kumpulan materi dan latihan minggu ketujuh.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-08/" data-title="minggu 08">
+
+                    <div class="task-top"><span class="task-number">WEEK 08</span><span class="task-flower">🍰</span></div>
+
+                    <h3>Minggu 08</h3>
+
+                    <p>Kumpulan materi dan latihan minggu kedelapan.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-09/" data-title="minggu 09">
+
+                    <div class="task-top"><span class="task-number">WEEK 09</span><span class="task-flower">🌺</span></div>
+
+                    <h3>Minggu 09</h3>
+
+                    <p>Kumpulan materi dan latihan minggu kesembilan.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-10/" data-title="minggu 10">
+
+                    <div class="task-top"><span class="task-number">WEEK 10</span><span class="task-flower">💌</span></div>
+
+                    <h3>Minggu 10</h3>
+
+                    <p>Kumpulan materi dan latihan minggu kesepuluh.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-11/" data-title="minggu 11">
+
+                    <div class="task-top"><span class="task-number">WEEK 11</span><span class="task-flower">🌷</span></div>
+
+                    <h3>Minggu 11</h3>
+
+                    <p>Kumpulan materi dan latihan minggu kesebelas.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+                <a class="task-card" href="./minggu-12/" data-title="minggu 12">
+
+                    <div class="task-top"><span class="task-number">WEEK 12</span><span class="task-flower">💗</span></div>
+
+                    <h3>Minggu 12</h3>
+
+                    <p>Kumpulan materi dan latihan minggu kedua belas.</p>
+
+                    <span class="task-link">Buka tugas <span class="arrow">↗</span></span>
+
+                </a>
+
+            </div>
+
+            <div class="empty-state" id="empty-state">
+
+                🐰 Yah, tugasnya tidak ditemukan. Coba kata kunci lain, ya!
+
+            </div>
+
+        </section>
+
+        <section class="about" id="tentang">
+
+            <div class="about-icon">📚</div>
+
+            <div>
+
+                <h2>About This Little Corner</h2>
+
+                <p>
+
+                    Website ini dibuat sebagai halaman utama kumpulan tugas
+
+                    mata kuliah Algoritma dan Pemrograman. Desainnya dibuat
+
+                    dengan HTML, CSS, dan JavaScript sederhana untuk
+
+                    menampilkan tugas secara rapi, menarik, dan mudah diakses.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>Made with <span>♡</span> by Meycha Grace Velizya</p>
+
+        <p>31250008 · Algoritma dan Pemrograman</p>
+
+        <a class="back-top" href="#top">Kembali ke atas ↑</a>
+
+    </footer>
+
+    <script>
+
+        const searchInput = document.getElementById("search-input");
+
+        const resetButton = document.getElementById("reset-search");
+
+        const taskCards = Array.from(document.querySelectorAll(".task-card"));
+
+        const taskCounter = document.getElementById("task-counter");
+
+        const emptyState = document.getElementById("empty-state");
+
+        function filterTasks() {
+
+            const keyword = searchInput.value.trim().toLowerCase();
+
+            let visibleCount = 0;
+
+            taskCards.forEach((card) => {
+
+                const title = card.dataset.title.toLowerCase();
+
+                const matches = title.includes(keyword);
+
+                card.style.display = matches ? "flex" : "none";
+
+                if (matches) {
+
+                    visibleCount++;
+
+                }
+
+            });
+
+            taskCounter.textContent = `${visibleCount} tugas ditemukan`;
+
+            emptyState.style.display = visibleCount === 0 ? "block" : "none";
+
+        }
+
+        searchInput.addEventListener("input", filterTasks);
+
+        resetButton.addEventListener("click", () => {
+
+            searchInput.value = "";
+
+            filterTasks();
+
+            searchInput.focus();
+
+        });
+
+        filterTasks();
+
+    </script>
+
+</body>
+
+</html>

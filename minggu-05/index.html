@@ -1587,378 +1587,332 @@
                 transition: none;
             }
         }
+    
+
+
+
+
+        
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pink World | Algoritma dan Pemrograman</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: #854866;
+            background: linear-gradient(135deg, #fff5fa, #ffe0ed, #fff8fc);
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffffd9;
+            border-bottom: 2px solid #ffd1e3;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d65391;
+        }
+
+        .ribbon {
+            font-size: 25px;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            padding: 38px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: white;
+            border: 2px solid #ffcee2;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px #d778a51c;
+        }
+
+        .hero h1 {
+            margin: 0 0 15px;
+            color: #c74784;
+            font-size: clamp(28px, 5vw, 42px);
+        }
+
+        .hero p {
+            line-height: 1.8;
+            margin: 8px 0;
+        }
+
+        .bunny {
+            min-width: 150px;
+            text-align: center;
+            font-size: 105px;
+        }
+
+        .bunny small {
+            display: block;
+            font-size: 17px;
+            color: #d65391;
+        }
+
+        .section-title {
+            margin: 32px 0 18px;
+            color: #c74784;
+            font-size: 25px;
+        }
+
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .task-card {
+            position: relative;
+            display: block;
+            padding: 22px 17px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #98506f;
+            background: white;
+            border: 1px solid #ffd0e2;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px #d778a511;
+            transition: 0.2s;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+            background: #fff0f7;
+            border-color: #e87bb0;
+            box-shadow: 0 10px 22px #d778a52b;
+        }
+
+        .task-number {
+            display: inline-block;
+            padding: 7px 12px;
+            margin-bottom: 13px;
+            color: white;
+            background: #e779ad;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .task-card strong {
+            display: block;
+            font-size: 18px;
+            color: #c74784;
+        }
+
+        .task-card p {
+            margin-bottom: 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .task-card::after {
+            content: "🎀";
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        .note {
+            margin-top: 28px;
+            padding: 22px;
+            text-align: center;
+            line-height: 1.8;
+            background: #ffeaf3;
+            border: 1px dashed #e779ad;
+            border-radius: 20px;
+        }
+
+        footer {
+            margin-top: 45px;
+            padding: 25px 15px;
+            text-align: center;
+            line-height: 1.8;
+            color: #a14d76;
+            background: #ffdeec;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                padding: 16px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 25px 18px;
+            }
+
+            .bunny {
+                font-size: 85px;
+            }
+
+            .task-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 11px;
+            }
+
+            .task-card {
+                padding: 17px 12px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .task-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVIGASI -->
-    <nav class="navbar">
-        <a class="brand" href="#home">🎀 Bunny Pink World</a>
-
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#fitur">Fitur</a>
-            <a href="#program">Program</a>
-            <a href="#tentang">Tentang</a>
-        </div>
-    </nav>
-
-    <!-- HALAMAN UTAMA -->
-    <header class="hero" id="home">
-        <div>
-            <span class="label">♡ Welcome to My Pink Website ♡</span>
-
-            <h1>Little Bunny,<br>Big Ideas! 🎀</h1>
-
-            <p>
-                Selamat datang di dunia pink yang penuh kelinci,
-                pita, dan kreativitas! Website ini dibuat sebagai
-                proyek pembelajaran algoritma dan pemrograman
-                menggunakan JavaScript.
-            </p>
-
-            <div class="button-row">
-                <a class="btn btn-primary" href="#program">
-                    ✨ Coba Program
-                </a>
-
-                <a class="btn btn-secondary" href="#tentang">
-                    ♡ Kenali Website
-                </a>
-            </div>
-        </div>
-
-        <div class="bunny-card">
-            <div class="ribbon">୨୧</div>
-            <div class="bunny" role="img" aria-label="Kelinci lucu">🐰</div>
-            <div class="ribbon">🎀</div>
-
-            <div class="bunny-caption">
-                Made with ♡ and a little pink magic!
-            </div>
-
-            <p>૮ ˶ᵔ ᵕ ᵔ˶ ა</p>
-        </div>
+    <header>
+        <div class="logo">🎀 My Pink World</div>
+        <div class="ribbon">୨୧ ♡ ୨୧</div>
     </header>
 
-    <!-- FITUR -->
-    <section class="section" id="fitur">
-        <div class="section-heading">
-            <h2>What's Inside? ♡</h2>
-            <p>Website lucu dengan program yang tetap bermanfaat.</p>
-        </div>
+    <main>
+        <section class="hero">
+            <div>
+                <h1>Tugas Algoritma<br>dan Pemrograman ♡</h1>
 
-        <div class="feature-grid">
-            <article class="feature-card">
-                <div class="feature-icon">🎀</div>
-                <h3>Pink Aesthetic</h3>
-                <p>
-                    Desain pink pastel dengan pita, hati,
-                    dan tampilan yang nyaman dilihat.
-                </p>
-            </article>
+                <p>🌸 Selamat datang di halaman tugasku!</p>
 
-            <article class="feature-card">
-                <div class="feature-icon">🐰</div>
-                <h3>Kawaii Bunny</h3>
-                <p>
-                    Hiasan kelinci lucu sebagai identitas
-                    kreatif dari halaman website ini.
-                </p>
-            </article>
-
-            <article class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3>Bubble Sort</h3>
-                <p>
-                    Program untuk mengurutkan nilai UTS mahasiswa
-                    dari terkecil ke terbesar atau sebaliknya.
-                </p>
-            </article>
-        </div>
-    </section>
-
-    <!-- PROGRAM BUBBLE SORT -->
-    <section class="section sort-section" id="program">
-        <div class="section-heading">
-            <h2>🎀 Student Score Sorter 🎀</h2>
-            <p>
-                Yuk, urutkan nilai UTS mahasiswa menggunakan
-                algoritma Bubble Sort!
-            </p>
-        </div>
-
-        <div class="sort-panel">
-
-            <div class="stats">
-                <div class="stat">
-                    <strong id="jumlah">18</strong>
-                    <span>Jumlah Mahasiswa</span>
-                </div>
-
-                <div class="stat">
-                    <strong>Bubble Sort</strong>
-                    <span>Algoritma</span>
-                </div>
-
-                <div class="stat">
-                    <strong id="jenisUrutan">Descending</strong>
-                    <span>Urutan Aktif</span>
-                </div>
-            </div>
-
-            <div class="controls">
-                <div class="select-wrap">
-                    <label for="urutan">♡ Pilih urutan nilai</label>
-
-                    <select id="urutan">
-                        <option value="descending">
-                            Descending — terbesar ke terkecil
-                        </option>
-
-                        <option value="ascending">
-                            Ascending — terkecil ke terbesar
-                        </option>
-                    </select>
-                </div>
-
-                <button class="btn btn-primary" id="tombolUrut">
-                    ♡ Urutkan Nilai
-                </button>
-
-                <button class="btn btn-secondary" id="tombolReset">
-                    ↻ Reset
-                </button>
-            </div>
-
-            <div class="status" id="status" aria-live="polite">
-                Data mahasiswa siap diurutkan.
-            </div>
-
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Mahasiswa</th>
-                            <th>Nilai UTS</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="tabelMahasiswa"></tbody>
-                </table>
-            </div>
-
-            <div class="method">
-                <h3>♡ Bagaimana Bubble Sort Bekerja?</h3>
-
-                Bubble Sort bekerja dengan membandingkan dua nilai
-                yang berdekatan. Jika urutannya belum sesuai,
-                kedua nilai ditukar. Proses ini diulang sampai
-                seluruh data tersusun sesuai pilihan.
+                <p>Nama: <strong>meycha grace vj</strong></p>
+                <p>NIM: <strong>31250008</strong></p>
 
                 <p>
-                    <strong>Ascending:</strong> nilai terendah
-                    menuju tertinggi.
-                    <br>
-                    <strong>Descending:</strong> nilai tertinggi
-                    menuju terendah.
-                </p>
-
-                <p id="detailProses">
-                    Pilih urutan dan klik tombol untuk memulai.
+                    Tempat mengumpulkan tugas, belajar coding,
+                    dan berkreasi dengan penuh warna pink! 🎀
                 </p>
             </div>
+
+            <div class="bunny">
+                🐰
+                <small>♡ cute but smart ♡</small>
+            </div>
+        </section>
+
+        <h2 class="section-title">🎀 Daftar Tugas Mingguan</h2>
+
+        <section class="task-grid">
+
+            <!-- GANTI href DENGAN LINK ASLI DARI INDEX.HTML LAMA -->
+            <a class="task-card" href="Minggu%2001/">
+                <span class="task-number">WEEK 01</span>
+                <strong>Minggu 01 ♡</strong>
+                <p>♡ Buka tugas minggu pertama</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2002/">
+                <span class="task-number">WEEK 02</span>
+                <strong>Minggu 02 ♡</strong>
+                <p>♡ Buka tugas minggu kedua</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2003/">
+                <span class="task-number">WEEK 03</span>
+                <strong>Minggu 03 ♡</strong>
+                <p>♡ Buka tugas minggu ketiga</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2004/">
+                <span class="task-number">WEEK 04</span>
+                <strong>Minggu 04 ♡</strong>
+                <p>♡ Buka tugas minggu keempat</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2005/">
+                <span class="task-number">WEEK 05</span>
+                <strong>Minggu 05 ♡</strong>
+                <p>♡ Buka tugas minggu kelima</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2006/">
+                <span class="task-number">WEEK 06</span>
+                <strong>Minggu 06 ♡</strong>
+                <p>♡ Buka tugas minggu keenam</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2007/">
+                <span class="task-number">WEEK 07</span>
+                <strong>Minggu 07 ♡</strong>
+                <p>♡ Buka tugas minggu ketujuh</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2008/">
+                <span class="task-number">WEEK 08</span>
+                <strong>Minggu 08 ♡</strong>
+                <p>♡ Buka tugas minggu kedelapan</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2009/">
+                <span class="task-number">WEEK 09</span>
+                <strong>Minggu 09 ♡</strong>
+                <p>♡ Buka tugas minggu kesembilan</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2010/">
+                <span class="task-number">WEEK 10</span>
+                <strong>Minggu 10 ♡</strong>
+                <p>♡ Buka tugas minggu kesepuluh</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2011/">
+                <span class="task-number">WEEK 11</span>
+                <strong>Minggu 11 ♡</strong>
+                <p>♡ Buka tugas minggu kesebelas</p>
+            </a>
+
+            <a class="task-card" href="Minggu%2012/">
+                <span class="task-number">WEEK 12</span>
+                <strong>Minggu 12 ♡</strong>
+                <p>♡ Buka tugas minggu kedua belas</p>
+            </a>
+
+        </section>
+
+        <div class="note">
+            <div style="font-size: 30px;">🐰 🎀 🌷</div>
+            <strong>Keep Learning, Keep Growing!</strong>
+            <br>
+            Satu langkah kecil hari ini, satu kemampuan baru esok hari. ♡
         </div>
-    </section>
+    </main>
 
-    <!-- TENTANG -->
-    <section class="section" id="tentang">
-        <div class="about-box">
-            <div style="font-size: 42px;">🐰 🎀 ♡</div>
-
-            <h2>About This Little Website</h2>
-
-            <p>
-                Website ini merupakan proyek pembelajaran
-                algoritma dan pemrograman yang dikembangkan
-                dengan HTML, CSS, dan JavaScript.
-            </p>
-
-            <p>
-                Tema pink pastel, kelinci, dan pita dipilih
-                untuk menunjukkan kreativitas melalui desain
-                website yang menarik sekaligus fungsional.
-            </p>
-
-            <p><strong>Thank you for visiting! ♡</strong></p>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
-        <div class="footer-ribbon">୨୧ 🎀 ୨୧</div>
-        <strong>Bunny Pink World</strong>
+        <strong>🎀 Meycha's Pink Corner 🎀</strong>
         <br>
-        Learn, Create, and Bloom with Creativity ♡
+        Tugas Algoritma dan Pemrograman
         <br>
-        Made with love using HTML, CSS & JavaScript.
+        Made with ♡, pink, and bunny magic!
     </footer>
-
-    <script>
-        // DATA CONTOH: 10 + nomor absen 8 = 18 mahasiswa.
-        // Ganti dengan nama dan nilai sesuai data tugasmu.
-
-        const dataAwal = [
-            { nama: "Andi", nilai: 78 },
-            { nama: "Budi", nilai: 85 },
-            { nama: "Citra", nilai: 92 },
-            { nama: "Dinda", nilai: 76 },
-            { nama: "Eko", nilai: 88 },
-            { nama: "Fitri", nilai: 95 },
-            { nama: "Gilang", nilai: 80 },
-            { nama: "Hana", nilai: 87 },
-            { nama: "Indra", nilai: 73 },
-            { nama: "Jihan", nilai: 90 },
-            { nama: "Kevin", nilai: 82 },
-            { nama: "Laras", nilai: 96 },
-            { nama: "Maya", nilai: 84 },
-            { nama: "Nanda", nilai: 79 },
-            { nama: "Oki", nilai: 91 },
-            { nama: "Putri", nilai: 86 },
-            { nama: "Rizky", nilai: 75 },
-            { nama: "Salsa", nilai: 98 }
-        ];
-
-        const tabel = document.getElementById("tabelMahasiswa");
-        const pilihanUrutan = document.getElementById("urutan");
-        const status = document.getElementById("status");
-
-        // Menampilkan data ke tabel HTML
-        function tampilkanData(data) {
-            tabel.innerHTML = "";
-
-            data.forEach((mahasiswa, index) => {
-                const baris = document.createElement("tr");
-
-                const kolomNomor = document.createElement("td");
-                kolomNomor.textContent = index + 1;
-
-                const kolomNama = document.createElement("td");
-                kolomNama.textContent = mahasiswa.nama;
-
-                const kolomNilai = document.createElement("td");
-                kolomNilai.textContent = mahasiswa.nilai;
-                kolomNilai.className = "nilai";
-
-                baris.append(
-                    kolomNomor,
-                    kolomNama,
-                    kolomNilai
-                );
-
-                tabel.appendChild(baris);
-            });
-        }
-
-        // Algoritma Bubble Sort
-        function bubbleSort(data, urutan) {
-            const hasil = data.map(mahasiswa => ({ ...mahasiswa }));
-
-            let perbandingan = 0;
-            let pertukaran = 0;
-
-            for (let i = 0; i < hasil.length - 1; i++) {
-                let adaPertukaran = false;
-
-                for (let j = 0; j < hasil.length - 1 - i; j++) {
-                    perbandingan++;
-
-                    let perluDitukar;
-
-                    if (urutan === "ascending") {
-                        perluDitukar =
-                            hasil[j].nilai > hasil[j + 1].nilai;
-                    } else {
-                        perluDitukar =
-                            hasil[j].nilai < hasil[j + 1].nilai;
-                    }
-
-                    if (perluDitukar) {
-                        const sementara = hasil[j];
-
-                        hasil[j] = hasil[j + 1];
-                        hasil[j + 1] = sementara;
-
-                        pertukaran++;
-                        adaPertukaran = true;
-                    }
-                }
-
-                if (!adaPertukaran) {
-                    break;
-                }
-            }
-
-            return {
-                data: hasil,
-                perbandingan,
-                pertukaran
-            };
-        }
-
-        // Menjalankan pengurutan
-        function urutkanNilai() {
-            const urutan = pilihanUrutan.value;
-            const hasil = bubbleSort(dataAwal, urutan);
-
-            tampilkanData(hasil.data);
-
-            const namaUrutan = urutan === "ascending"
-                ? "Ascending (terkecil ke terbesar)"
-                : "Descending (terbesar ke terkecil)";
-
-            document.getElementById("jenisUrutan").textContent =
-                urutan === "ascending" ? "Ascending" : "Descending";
-
-            status.textContent =
-                "Yeay! Pengurutan berhasil: " + namaUrutan + ".";
-
-            document.getElementById("detailProses").textContent =
-                "Bubble Sort melakukan " + hasil.perbandingan +
-                " kali perbandingan dan " + hasil.pertukaran +
-                " kali pertukaran pada data ini.";
-        }
-
-        // Mengembalikan data ke urutan awal
-        function resetData() {
-            pilihanUrutan.value = "descending";
-            tampilkanData(dataAwal);
-
-            document.getElementById("jenisUrutan").textContent =
-                "Descending";
-
-            status.textContent =
-                "Data berhasil dikembalikan ke urutan awal.";
-
-            document.getElementById("detailProses").textContent =
-                "Pilih urutan dan klik tombol untuk memulai.";
-        }
-
-        // Menghubungkan tombol dengan fungsi program
-        document.getElementById("tombolUrut")
-            .addEventListener("click", urutkanNilai);
-
-        document.getElementById("tombolReset")
-            .addEventListener("click", resetData);
-
-        // Menampilkan data saat halaman pertama kali dibuka
-        document.getElementById("jumlah").textContent =
-            dataAwal.length;
-
-        urutkanNilai();
-    </script>
 
 </body>
 </html>
